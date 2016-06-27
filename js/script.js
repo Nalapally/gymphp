@@ -1,8 +1,16 @@
+
 $(document).ready(function(e){
+
+        // Date picker
         $('#fromDate,#toDate').datepicker();
+
+        // Data Table
         $('#example').DataTable();
+
         $(".data").hide();
+
         $("#main-content-div").show();
+
         $("#main-content").click(function(e){
             $(".data").hide();
             $("#main-content-div").show();
@@ -21,6 +29,36 @@ $(document).ready(function(e){
         });
         $("#create-member-submit").click(function(e){
             //e.preventDefault();
+        });
+
+        $( "#create-member-submit" ).click(function( event ) {
+
+            var memberName = $("#memberName").val();
+            var sex = $("#sex").val();
+            var age = $("#age").val();
+            var fromDate = $("#fromDate").val();
+            var mode = $("#mode").val();
+            var toDate = $("#toDate").val();
+            var amount = $("#amount").val();
+            var email = $("#email").val();
+            var phone = $("#phone").val();
+            var photo = $("img").attr("src");
+
+            var json = {
+                memberName : memberName,
+                sex : sex,
+                age : age,
+                fromDate : fromDate,
+                mode : mode,
+                toDate :toDate,
+                amount : amount,
+                email : email,
+                phone : phone,
+                photo : photo
+
+            }
+
+            alert(JSON.stringify(json));
         });
 
 
@@ -72,6 +110,7 @@ var data = {
     ]
 };
 
+// Graph
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'polarArea',
@@ -132,7 +171,7 @@ var myChart = new Chart(ctx, {
                     canvas.getContext('2d').drawImage(video, 0, 0);
                     var data = canvas.toDataURL('image/webp');
                     document.getElementById('photo').setAttribute('src', data);
-		    console.log(data);
+		    //console.log(data);
                 }
             }, false);
 
